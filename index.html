@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reserva de Estacionamiento UNNE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Reserva de Estacionamiento - UNNE</h1>
+
+  <h2>Autos</h2>
+  <div class="grid" id="autos"></div>
+
+  <h2>Motos</h2>
+  <div class="grid" id="motos"></div>
+
+  <!-- Modal para confirmar reserva -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modal-title"></h3>
+      <p id="modal-price"></p>
+      <button id="confirm-button">Confirmar Reserva</button>
+      <button id="cancel-button">Cancelar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
