@@ -2,11 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Reserva de Estacionamiento UNNE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva Estacionamiento UNNE</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Reserva de Estacionamiento - UNNE</h1>
+  <h1>Reserva de Estacionamiento</h1>
 
   <h2>Autos</h2>
   <div class="grid" id="autos"></div>
@@ -14,16 +15,65 @@
   <h2>Motos</h2>
   <div class="grid" id="motos"></div>
 
-  <!-- Modal para confirmar reserva -->
+  <!-- Modal para Reservar -->
   <div id="modal" class="modal hidden">
     <div class="modal-content">
-      <h3 id="modal-title"></h3>
-      <p id="modal-price"></p>
-      <button id="confirm-button">Confirmar Reserva</button>
-      <button id="cancel-button">Cancelar</button>
+      <h2>Reservar Lugar</h2>
+      <form id="reservationForm">
+        <label>Nombre:</label><br>
+        <input type="text" id="nombre" required><br><br>
+        <label>Apellido:</label><br>
+        <input type="text" id="apellido" required><br><br>
+        <label>DNI:</label><br>
+        <input type="text" id="dni" required><br><br>
+        <button type="submit">Confirmar Reserva</button>
+        <button type="button" onclick="closeModal()">Cancelar</button>
+      </form>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    let selectedSpot = null;
+
+    function createSpots(containerId, count) {
+      const container = document.getElementById(containerId);
+      for (let i = 1; i <= count; i++) {
+        const spot = document.createElement('button');
+        spot.className = 'spot';
+        spot.textContent = i;
+        spot.addEventListener('click', () => openModal(spot));
+        container.appendChild(spot);
+      }
+    }
+
+    function openModal(spot) {
+      selectedSpot = spot;
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.getElementById('reservationForm').reset();
+    }
+
+    document.getElementById('reservationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const apellido = document.getElementById('apellido').value;
+      const dni = document.getElementById('dni').value;
+
+      if (nombre && apellido && dni) {
+        selectedSpot.textContent = 'Ocupado';
+        selectedSpot.disabled = true;
+        selectedSpot.title = `Reservado por: ${nombre} ${apellido} (DNI: ${dni})`; // Tooltip
+        closeModal();
+      }
+    });
+
+    createSpots('autos', 30);
+    createSpots('motos', 50);
+  </script>
 </body>
 </html>
+
