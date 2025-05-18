@@ -40,7 +40,7 @@ body {
     transition: background-color 0.3s, transform 0.2s;
   }
   
-  /* Efecto al pasar el mouse */
+  /* Efecto al pasar el mouse */ 
   .spot:hover {
     background-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.1);
@@ -83,7 +83,7 @@ body {
     border-radius: 5px;
   }
   
-  /* Botones del formulario */
+  /* Botones del formulario GOD */
   button[type="submit"], button[type="button"] {
     margin-top: 15px;
     padding: 10px 20px;
