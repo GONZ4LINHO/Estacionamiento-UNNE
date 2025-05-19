@@ -235,7 +235,9 @@
           cronometro.textContent = `⏱️ ${tiempo}s`;
         } else {
           clearInterval(intervalo);
-          alert("⛔ Tiempo agotado. Penalización aplicada.");
+          alert(`⛔ Tiempo agotado. 
+          Deberás el tiempo de estacionamiento.
+          De lo contrario, recibirás una penalización por el tiempo extra.`);
           liberarReserva(boton, nombre);
         }
       }, 1000);
