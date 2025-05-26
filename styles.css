@@ -8,26 +8,26 @@ body {
     background-position: center;
     height: 100vh;
     overflow-y: auto;
-  }
-  
-  /* Títulos en blanco y centrados */
-  h1, h2 {
+}
+
+/* Títulos en blanco y centrados */
+h1, h2 {
     color: white;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Sombra para que se vea mejor sobre la imagen */
-  }
-  
-  /* Grillas de estacionamientos */
-  .grid {
+}
+
+/* Grillas de estacionamientos */
+.grid {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
     margin: 20px;
-  }
-  
-  /* Botones de lugares */
-  .spot {
+}
+
+/* Botones de lugares */
+.spot {
     width: 60px;
     height: 60px;
     background-color: rgba(207, 23, 23, 0.2); /* Transparente */
@@ -38,16 +38,30 @@ body {
     cursor: pointer;
     backdrop-filter: blur(2px); /* Efecto vidrio */
     transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  /* Efecto al pasar el mouse */ 
-  .spot:hover {
+}
+
+/* Efecto al pasar el mouse */ 
+.spot:hover {
     background-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.1);
-  }
-  
-  /* Ventana modal para reserva */
-  .modal {
+}
+
+/* Lugar reservado */
+.spot.reserved {
+    background-color: rgba(255, 0, 0, 0.8) !important; /* rojo fuerte */
+    border-color: rgba(255, 0, 0, 1) !important;
+    cursor: default;
+    color: white;
+    transform: none !important; /* quitar el zoom hover para reservado */
+}
+
+.spot.reserved:hover {
+    background-color: rgba(255, 0, 0, 0.9) !important; /* un poco más rojo */
+    transform: none !important; /* que no escale al hacer hover */
+}
+
+/* Ventana modal para reserva */
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -58,33 +72,34 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1000;
-  }
-  
-  /* Contenido del modal */
-  .modal-content {
+}
+
+/* Contenido del modal */
+.modal-content {
     background-color: white;
     padding: 30px;
     border-radius: 12px;
     width: 300px;
     text-align: center;
-  }
-  
-  /* Ocultar el modal */
-  .hidden {
+}
+
+/* Ocultar el modal */
+.hidden {
     display: none;
-  }
-  
-  /* Inputs del formulario */
-  input[type="text"] {
+}
+
+/* Inputs del formulario */
+input[type="text"],
+input[type="number"] {
     width: 90%;
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  /* Botones del formulario GOD */
-  button[type="submit"], button[type="button"] {
+}
+
+/* Botones del formulario */
+button[type="submit"], button[type="button"], #confirm-button, #cancel-button {
     margin-top: 15px;
     padding: 10px 20px;
     border: none;
@@ -94,9 +109,8 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  button[type="submit"]:hover, button[type="button"]:hover {
+}
+
+button[type="submit"]:hover, button[type="button"]:hover, #confirm-button:hover, #cancel-button:hover {
     background-color: #0056b3;
-  }
-  
+}

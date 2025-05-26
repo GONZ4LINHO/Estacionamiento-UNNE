@@ -161,6 +161,11 @@
     const inputNombre = document.getElementById("nombre");
     const inputApellido = document.getElementById("apellido");
     const inputDni = document.getElementById("dni");
+    const inputTarjeta = document.getElementById("Tarjeta credito/debito");
+    const inputMes = document.getElementById("Mes venc");
+    const inputAño = document.getElementById("Año venc");
+    const inputCVV = document.getElementById("CVV");
+    // Variables para manejar el botón actual y el nombre de la plaza
 
     let botonActual = null;
     let nombrePlaza = "";
@@ -203,8 +208,13 @@
       const nombre = inputNombre.value.trim();
       const apellido = inputApellido.value.trim();
       const dni = inputDni.value.trim();
+      const tarjeta = inputTarjeta.value.trim();
+      const mes = inputMes.value.trim();
+      const año = inputAño.value.trim();
+      const cvv = inputCVV.value.trim();
 
-      if (!nombre || !apellido || !dni) {
+
+      if (!nombre || !apellido || !dni || !tarjeta || !mes || !año || !cvv) {
         alert("Por favor completá todos los campos.");
         return;
       }
