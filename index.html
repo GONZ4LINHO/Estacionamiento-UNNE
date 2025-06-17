@@ -125,6 +125,7 @@
   </style>
 </head>
 <body>
+  <!-- Se crean los titulos de la pagina -->
   <h1>Reserva de Estacionamiento - UNNE</h1>
 
   <h2>🚗 Autos (50 lugares)</h2>
@@ -133,6 +134,7 @@
   <h2>🏍️ Motos (70 lugares)</h2>
   <div class="plazas" id="motos"></div>
 
+  <!-- Se generan inputs para agregar valores a las variables-->
   <div id="modal" class="modal">
     <div class="modal-content">
       <h3>Datos para la reserva</h3>
@@ -172,8 +174,8 @@
     const inputCVV = document.getElementById("CVV");
 
     let botonActual = null;
-    let nombrePlaza = "";
-
+    let nombrePlaza = "";
+    
     for (let i = 1; i <= 50; i++) {
       crearBoton(`A${i}`, autosContainer);
     }
@@ -265,7 +267,7 @@
           clearInterval(intervalo);
           alert(`⛔ Tiempo agotado. 
           Deberás renovar el tiempo de estacionamiento.
-          De lo contrario, recibirás una penalización por el tiempo extra.`);
+          De lo contrario, deberás abonar por el tiempo extra.`);
           liberarReserva(boton, nombre);
         }
       }, 1000);
