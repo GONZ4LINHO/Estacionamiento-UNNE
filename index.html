@@ -74,7 +74,6 @@
       background-color: #f1c40f;
     }
 
-    /* Estilos del modal */
     .modal {
       display: none;
       position: fixed;
@@ -131,20 +130,22 @@
   <h2>🚗 Autos (50 lugares)</h2>
   <div class="plazas" id="autos"></div>
 
-  <h2>🏍️ Motos (30 lugares)</h2>
+  <h2>🏍️ Motos (70 lugares)</h2>
   <div class="plazas" id="motos"></div>
 
-  <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <h3>Datos para la reserva</h3>
       <input type="text" id="nombre" placeholder="Nombre" required />
       <input type="text" id="apellido" placeholder="Apellido" required />
       <input type="number" id="dni" placeholder="DNI" required />
-      <input type="number" id="Tarjeta credito/debito" placeholder="tarjeta" required />
-      <input type="number" id="Mes venc" placeholder="mes" required />
-      <input type="number" id="Año venc" placeholder="año" required />
-      <input type="number" id="CVV" placeholder="codigo" required />
+      <input type="text" id="marca" placeholder="Marca" required />
+      <input type="text" id="modelo" placeholder="Modelo" required />
+      <input type="text" id="patente" placeholder="Patente" required />
+      <input type="number" id="Tarjeta" placeholder="N° de tarjeta" required />
+      <input type="number" id="MesVenc" placeholder="Mes vencimiento" required />
+      <input type="number" id="AñoVenc" placeholder="Año vencimiento" required />
+      <input type="number" id="CVV" placeholder="CVV" required />
       <div style="display: flex; justify-content: space-between;">
         <button id="confirmar">Reservar</button>
         <button id="cancelar">Cancelar</button>
@@ -158,14 +159,17 @@
     const modal = document.getElementById("modal");
     const confirmarBtn = document.getElementById("confirmar");
     const cancelarBtn = document.getElementById("cancelar");
+
     const inputNombre = document.getElementById("nombre");
     const inputApellido = document.getElementById("apellido");
     const inputDni = document.getElementById("dni");
-    const inputTarjeta = document.getElementById("Tarjeta credito/debito");
-    const inputMes = document.getElementById("Mes venc");
-    const inputAño = document.getElementById("Año venc");
+    const inputMarca = document.getElementById("marca");
+    const inputModelo = document.getElementById("modelo");
+    const inputPatente = document.getElementById("patente");
+    const inputTarjeta = document.getElementById("Tarjeta");
+    const inputMes = document.getElementById("MesVenc");
+    const inputAño = document.getElementById("AñoVenc");
     const inputCVV = document.getElementById("CVV");
-    // Se agregan variables para medios de pago y datos personales
 
     let botonActual = null;
     let nombrePlaza = "";
@@ -174,7 +178,7 @@
       crearBoton(`A${i}`, autosContainer);
     }
 
-    for (let i = 1; i <= 30; i++) {
+    for (let i = 1; i <= 70; i++) {
       crearBoton(`M${i}`, motosContainer);
     }
 
@@ -197,6 +201,14 @@
       inputNombre.value = "";
       inputApellido.value = "";
       inputDni.value = "";
+      inputMarca.value = "";
+      inputModelo.value = "";
+      inputPatente.value = "";
+      inputTarjeta.value = "";
+      inputMes.value = "";
+      inputAño.value = "";
+      inputCVV.value = "";
+
       modal.style.display = "block";
     }
 
@@ -208,13 +220,15 @@
       const nombre = inputNombre.value.trim();
       const apellido = inputApellido.value.trim();
       const dni = inputDni.value.trim();
+      const marca = inputMarca.value.trim();
+      const modelo = inputModelo.value.trim();
+      const patente = inputPatente.value.trim();
       const tarjeta = inputTarjeta.value.trim();
       const mes = inputMes.value.trim();
       const año = inputAño.value.trim();
       const cvv = inputCVV.value.trim();
 
-
-      if (!nombre || !apellido || !dni || !tarjeta || !mes || !año || !cvv) {
+      if (!nombre || !apellido || !dni || !marca || !modelo || !patente || !tarjeta || !mes || !año || !cvv) {
         alert("Por favor completá todos los campos.");
         return;
       }
@@ -266,7 +280,6 @@
       };
     }
 
-    // Cierra el modal si se hace clic fuera del contenido
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
@@ -275,4 +288,3 @@
   </script>
 </body>
 </html>
-
